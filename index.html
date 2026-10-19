@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>레퍼런스 → 노래 프롬프트</title>
+<style>
+:root{--bg:#111119;--panel:#1b1b27;--line:#303044;--text:#f4f2fb;--muted:#aaa8bd;--pink:#ff7aaf;--violet:#a998ff;--mint:#8de2cb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#302449 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.55 system-ui,"Segoe UI",sans-serif}main{max-width:1160px;margin:auto;padding:38px 22px 72px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:.18em;text-transform:uppercase}h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:10px 0 14px;letter-spacing:-.04em}.lead{color:var(--muted);max-width:700px;margin:0 0 28px}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:18px}.panel{background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 60px #0002}.panel h2{font-size:18px;margin:0 0 5px}.hint{color:var(--muted);font-size:13px;margin:0 0 18px}.row{display:flex;gap:10px;align-items:end}label{display:block;color:#d7d4e6;font-size:13px;margin:13px 0 6px}input,textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:#12121b;color:var(--text);font:inherit;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--violet)}textarea{min-height:85px;resize:vertical}.row input{flex:1}button{border:0;border-radius:10px;padding:11px 15px;background:linear-gradient(120deg,var(--pink),var(--violet));color:#17111e;font-weight:750;cursor:pointer;white-space:nowrap}button.secondary{background:#29283a;color:var(--text);border:1px solid var(--line)}button:hover{filter:brightness(1.08)}.ref-list{display:grid;gap:12px;margin-top:18px}.ref{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#14141d}.ref iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.refbody{padding:12px 14px}.refmeta{display:flex;justify-content:space-between;align-items:center;gap:8px}.refmeta strong{font-size:14px;overflow-wrap:anywhere}.pill{color:var(--mint);font-size:12px;border:1px solid #38584f;border-radius:20px;padding:3px 9px}.refbody p{font-size:12px;color:var(--muted);margin:6px 0 0}.remove{background:none;color:#c8bfd8;padding:5px 8px;border:1px solid var(--line)}.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}.out{min-height:250px;font-family:ui-monospace,Consolas,monospace;font-size:13px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.notice{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:17px}.empty{border:1px dashed #444258;border-radius:12px;padding:20px;color:var(--muted);text-align:center;font-size:13px}@media(max-width:800px){.layout{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr}}@media(max-width:500px){main{padding:25px 14px}.panel{padding:17px}.fields{grid-template-columns:1fr}.full{grid-column:auto}.row{align-items:stretch;flex-direction:column}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">SONG PROMPT STUDIO</div><h1>레퍼런스를 듣고,<br>나만의 노래 프롬프트로.</h1>
+<p class="lead">조회수가 높은 유튜브 곡을 모아 재생하며 분위기와 사운드를 기록하세요. 공통된 음악적 특징을 정리해 AI 작곡 도구에 넣을 프롬프트로 바꿔드립니다.</p>
+<div class="layout">
+<section class="panel">
+<h2>1. 레퍼런스 곡 추가</h2><p class="hint">유튜브 링크와 조회수를 넣고, 플레이어로 직접 들어보세요.</p>
+<div class="row"><div style="flex:1"><label for="url">YouTube 링크</label><input id="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url"></div><div style="width:150px"><label for="views">조회수 (선택)</label><input id="views" placeholder="예: 120만" inputmode="text"></div><button id="add">곡 추가</button></div>
+<div id="refs" class="ref-list"><div class="empty">아직 곡이 없어요. 링크를 추가해 보세요.</div></div>
+<div class="notice">앱은 영상의 조회수나 오디오를 자동 수집하지 않습니다. 임베드 플레이어로 듣고 특징을 적어 주세요. 저작권이 있는 곡의 멜로디·가사를 복제하는 대신 장르, 질감, 에너지 같은 일반적인 특성만 프롬프트에 반영합니다.</div>
+</section>
+<section class="panel">
+<h2>2. 들은 특징을 정리</h2><p class="hint">레퍼런스에서 발견한 공통점이나 원하는 방향을 적어 주세요.</p>
+<div class="fields">
+<div><label for="genre">장르 / 스타일</label><input id="genre" placeholder="예: 시티팝, 인디 팝"></div>
+<div><label for="mood">분위기</label><input id="mood" placeholder="예: 몽환적, 벅차오르는"></div>
+<div><label for="tempo">템포 / 그루브</label><input id="tempo" placeholder="예: 미디엄 업템포, 셔플"></div>
+<div><label for="voice">보컬</label><input id="voice" placeholder="예: 숨결 섞인 여성 보컬"></div>
+<div class="full"><label for="sound">악기와 사운드 질감</label><textarea id="sound" placeholder="예: 따뜻한 아날로그 신스, 타이트한 킥, 반짝이는 기타"></textarea></div>
+<div><label for="energy">전개 / 에너지</label><input id="energy" placeholder="예: 절제된 벌스에서 후렴에 크게 확장"></div>
+<div><label for="language">가사 언어 / 주제</label><input id="language" placeholder="예: 한국어, 여름밤의 해방감"></div>
+<div class="full"><label for="extra">추가로 원하는 점</label><textarea id="extra" placeholder="곡 길이, 시대감, 피하고 싶은 요소 등"></textarea></div>
+</div>
+<div class="actions"><button id="generate">프롬프트 만들기</button><button id="clear" class="secondary">초기화</button></div>
+<label for="output">생성 프롬프트</label><textarea id="output" class="out" placeholder="특징을 입력한 뒤 프롬프트 만들기를 눌러 주세요."></textarea>
+<div class="actions"><button id="copy">프롬프트 복사</button></div>
+</section></div></main>
+<script>
+const $=id=>document.getElementById(id), refs=[];
+function videoId(raw){try{const u=new URL(raw.trim());if(u.hostname==="youtu.be")return u.pathname.split("/").filter(Boolean)[0]||"";if(u.hostname.endsWith("youtube.com")){if(u.pathname==="/watch")return u.searchParams.get("v")||"";const m=u.pathname.match(/^\/(?:embed|shorts)\/([^/?]+)/);return m?m[1]:""}}catch{}return""}
+function render(){const box=$("refs");if(!refs.length){box.innerHTML='<div class="empty">아직 곡이 없어요. 링크를 추가해 보세요.</div>';return}box.innerHTML="";refs.forEach((r,i)=>{const card=document.createElement("article");card.className="ref";card.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(r.id)+'" title="YouTube reference player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="refbody"><div class="refmeta"><strong>레퍼런스 '+(i+1)+'</strong><span class="pill">'+(r.views?escapeHtml(r.views)+' 조회':'조회수 미입력')+'</span><button class="remove" data-remove="'+i+'">삭제</button></div><p><a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener" style="color:#b9adff">YouTube에서 열기 ↗</a></p></div>';box.appendChild(card)});box.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{refs.splice(Number(b.dataset.remove),1);render()})}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("add").onclick=()=>{const url=$("url").value.trim(),id=videoId(url);if(!id){alert("유효한 YouTube 영상 링크를 입력해 주세요.");return}if(refs.some(r=>r.id===id)){alert("이미 추가한 영상이에요.");return}refs.push({url,id,views:$("views").value.trim()});$("url").value="";$("views").value="";render()};
+$("url").addEventListener("keydown",e=>{if(e.key==="Enter")$("add").click()});
+$("generate").onclick=()=>{if(!refs.length){alert("먼저 YouTube 레퍼런스를 하나 이상 추가해 주세요.");return}const get=id=>$(id).value.trim();const parts=[get("genre")&&"장르/스타일: "+get("genre"),get("mood")&&"분위기: "+get("mood"),get("tempo")&&"템포와 그루브: "+get("tempo"),get("voice")&&"보컬: "+get("voice"),get("sound")&&"악기와 사운드 질감: "+get("sound"),get("energy")&&"곡의 전개와 에너지: "+get("energy"),get("language")&&"가사 언어와 주제: "+get("language"),get("extra")&&"추가 요청: "+get("extra")].filter(Boolean);const refLine=refs.map((r,i)=>"레퍼런스 "+(i+1)+(r.views?" ("+r.views+" 조회)":"")).join(", ");$("output").value="다음 음악적 방향을 가진 오리지널 곡을 만들어 주세요.\n\n참고 영상: "+refLine+"\n\n"+(parts.length?parts.join("\n"):"레퍼런스를 들으며 파악한 특징을 바탕으로 매력적인 방향을 제안해 주세요.")+"\n\n요청: 레퍼런스의 특정 멜로디, 가사, 편곡을 복제하지 말고 위의 일반적인 음악 특성만 활용해 독창적인 멜로디와 구성을 만들어 주세요. 완성도 높은 믹스와 선명한 후렴 훅을 포함해 주세요."};
+$("copy").onclick=async()=>{if(!$("output").value){alert("먼저 프롬프트를 만들어 주세요.");return}try{await navigator.clipboard.writeText($("output").value);$("copy").textContent="복사 완료";setTimeout(()=>$("copy").textContent="프롬프트 복사",1400)}catch{$("output").select();document.execCommand("copy");alert("프롬프트를 복사했어요.")}};
+$("clear").onclick=()=>{["genre","mood","tempo","voice","sound","energy","language","extra","output"].forEach(id=>$(id).value="")};
+</script></body></html>
+
